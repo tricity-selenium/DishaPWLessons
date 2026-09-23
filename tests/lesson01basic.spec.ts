@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test'
+import user from '../loginuser.json'
 
 test('Validate PageTitle', async ({page})=>{
 
@@ -13,8 +14,8 @@ test('Validate PageTitle', async ({page})=>{
 test('Valid Login', async ({page})=>{
 
     await page.goto('https://www.saucedemo.com/');
-    await page.locator('#user-name').fill('standard_user');
-    await page.locator('#password').fill('secret_sauce');
+    await page.locator('#user-name').fill(user[0].username);
+    await page.locator('#password').fill(user[0].password);
     await page.locator('#login-button').click();
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     await page.waitForTimeout(5000);
@@ -24,8 +25,8 @@ test('Valid Login', async ({page})=>{
 test('InValid Login', async ({page})=>{
 
     await page.goto('https://www.saucedemo.com/');
-    await page.locator('#user-name').fill('standard');
-    await page.locator('#password').fill('sauce');
+    await page.locator('#user-name').fill(user[1].username);
+    await page.locator('#password').fill(user[1].password);
     await page.locator('#login-button').click();
     await expect(page).not.toHaveURL('https://www.saucedemo.com/inventory.html');
     await page.waitForTimeout(5000);

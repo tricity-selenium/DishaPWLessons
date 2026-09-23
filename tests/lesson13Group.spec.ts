@@ -18,7 +18,7 @@ test.describe('HomePageTest' , ()=>{
 
 test.describe('LoginTest' , ()=>{
 
-test('ValidLoginTest @Smoke' ,  async ({page})=>{
+test('@Smoke ValidLoginTest' ,  async ({page})=>{
 
  console.log("This is ValidLoginTest")
 
